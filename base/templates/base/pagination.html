@@ -1,0 +1,27 @@
+{% extends "base/page.html" %}
+
+{% block page %}
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="container">
+        {% if page.has_other_pages %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item {% if not page.has_previous %} disabled {% endif %}">
+                        <a class="page-link" href='{{url}}?page={% if page.has_previous %}{{ page.previous_page_number }}{% else %}#{% endif %}'>Previous</a>                    
+                    </li>
+                    {%for page_number in page.paginator.page_range%}
+                        <li class="page-item {% if page.number == page_number %} active {% endif %}">
+                            <a class="page-link" href='{{url}}?page={{ page_number }}'>{{ page_number }}</a>
+                        </li>
+                    {% endfor %}
+                    <li class="page-item {% if not page.has_next %} disabled {% endif %}">
+                        <a class="page-link" href='{{url}}?page={% if page.has_next %}{{ page.next_page_number }}{% else %}#{% endif %}'>Next</a>
+                    </li>
+                </ul>
+            </nav>
+        {% endif %}
+    </div>
+{% endblock %}
