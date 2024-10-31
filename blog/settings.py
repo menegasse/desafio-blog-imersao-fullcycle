@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6y*=soqn2ri345krc9)*_7vyw0vnhq&cz@fy_(jke9_^eflx+b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", True)
 
 ALLOWED_HOSTS = []
 
@@ -130,10 +130,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / STATIC_URL,
-]
+STATIC_URL = 'static'
+STATIC_ROOT = os.path.join(BASE_DIR, STATIC_URL)
 
 # This production code might break development mode, so we check whether we're in DEBUG mode
 if not DEBUG:
