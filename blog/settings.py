@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-6y*=soqn2ri345krc9)*_7vyw0vnhq&cz@fy_(jke9_^eflx+b
 DEBUG = os.environ.get("DEBUG", True)
 
 ALLOWED_HOSTS = [
+    "127.0.0.1",
     os.environ.get("RENDER_HOST"),
 ]
 
